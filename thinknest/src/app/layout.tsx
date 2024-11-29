@@ -1,14 +1,19 @@
-import { Metadata } from 'next';
-import './globals.css';  
-import Header from '@/components/Header/Header'
-import Navbar from '@/components/NavBar/NavBar'
+import { Metadata } from "next";
+import "./globals.css";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/NavBar/app-sidebar";
+import Header from "@/components/Header/Header"
 
 export const metadata: Metadata = {
-  title: 'ThinkNest',
+  title: "ThinkNest",
   description: "Your Brain's Best Friend",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
@@ -18,10 +23,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <Header />   
-        <Navbar /> 
-        {children}
+        <SidebarProvider>
+          <div className="grid grid-cols-[auto,1fr] w-full">
+            <AppSidebar/>
+            <main className="felx felx-col h-screen overflow-auto">
+              <SidebarTrigger />
+              {children}
+            </main>
+          </div>
+        </SidebarProvider>
       </body>
     </html>
   );
 }
+
+

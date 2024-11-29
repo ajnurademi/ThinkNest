@@ -3,9 +3,8 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div>
-        <h1>Bsp. Calender</h1>
-    </div>
+    
+      <div className='bg-[#F9F9F9] rounded-tl-lg h-full'>Calender</div>
   )
 }
 
